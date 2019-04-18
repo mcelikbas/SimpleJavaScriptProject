@@ -11,7 +11,7 @@ $(function() {
     renderSections();
     fillProgressBars();
 
-    //$(".content").toggle();
+    $(".content").toggle();
     $(".more-less").click(function () {
         $(this).parents("section").find(".content").animate({
             left: "+=50",
