@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calcul de note</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .progressBar {
+            width: 98%;
+            background-color: rgba(3, 119, 18, 0.329);
+        }
+
+        .progressBarFill {
+            width: 0%;
+            height: 20px;
+            background-color: #4CAF50;
+            text-align: center;
+            /* To center it horizontally (if you want) */
+            line-height: 17px;
+            /* To center it vertically */
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center">Note</h1>
+
+    <script id="tmpl_section" type="x-tmpl-mustache">
+        <section class="row justify-content-md-center m-0 mb-1 p-0">
+            <div class="col-md-6 border border-primary">
+                <header class="row pl-3">
+                    <h2 class="col-md-9">{{title}}</h2>
+                    <div class="col-md-3 text-right align-self-center">
+                        <a href="#" class="more-less more btn btn-primary">View more</a>
+                    </div>
+                </header>
+
+                <ul class="row content border-top border-secondary mb-0">
+                    {{#content}}
+                    <li class="col-md-12 mb-2">
+                        <div class="row">
+                            <div class="col-auto mr-auto m-0 p-0">{{subtitle}}</div>
+                            <div class="col-auto">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="note" class="pr-2">Note</label>
+                                        <span class="font-weight-bold indigo-text mr-2">0</span>
+                                        <input type="range" class="range-field" id="note" min="0" max="5" step="1" value="0">
+                                        <span class="font-weight-bold indigo-text ml-2">5</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="m-0 p-0 progressBar">
+                                <div class="progressBarFill">{{progress}}%</div>
+                            </div>
+                        </div>
+                    </li>
+                    {{/content}}
+                </ul>
+            </div>
+        </section>
+    </script>
+    <script id="tmpl_date" type="x-tmpl-mustache">
+        <div class="row justify-content-end">
+            <div class="col-auto">{{date}}</div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-auto">{{time}}</div>
+        </div>
+    </script>
+    
+    <div id="div_section" class="container-fluid"></div>
+
+    <div id="div_note" class="container-fluid">
+        <div class="row justify-content-md-center m-0 p-0">
+            <p class="col-md-6 border border-primary text-center p-1">Note: N/A</p>
+        </div>
+    </div>
+
+    <footer id="div_date" class="container-fluid"></footer>
+
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="scripts/mustache.min.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>
