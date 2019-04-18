@@ -1,5 +1,6 @@
 $(function() {
     
+    // variable 'user' is visible only in this block of document.ready
     user = {
         firstname: "Bob",
         lastname: "Kelso",
@@ -30,7 +31,8 @@ $(function() {
     });
     
     $(".range-field").change(function () {
-        $("#div_note").find("p").text("Note: " + calculateGrade());
+        $("#nb_note").text("Nombre de Note: " + numberOfGrades());
+        $("#note").text("Note: " + calculateGrade());
     });
 
     // set date & time update rate to one second
@@ -82,18 +84,25 @@ function moveProgressBar(bar, targetWidth) {
     }
 }
 
-
-
-function calculateGrade() {
-    let grade = 0;
+function numberOfGrades() {
     let nb_grade = 0;
     $(".range-field").each(function (i, value) {
         if(!$(this).parent().parent().parent().hasClass("d-none")) {
-            grade += parseInt($(value).val());
             nb_grade++;
         }
     });
-    return Math.round((grade / nb_grade) * 100) / 100;
+    return nb_grade;
+}
+
+function calculateGrade() {
+    // variables 'grade' only visible in function calculateGrade
+    let grade = 0;
+    $(".range-field").each(function (i, value) {
+        if(!$(this).parent().parent().parent().hasClass("d-none")) {
+            grade += parseInt($(value).val());
+        }
+    });
+    return Math.round((grade / numberOfGrades()) * 100) / 100;
 }
 
 // ajax call for getting date & time (note: time is GMT-2)
