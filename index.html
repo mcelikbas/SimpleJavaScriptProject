@@ -6,27 +6,18 @@
     <title>Calcul de note</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .progressBar {
-            width: 98%;
-            background-color: rgba(3, 119, 18, 0.329);
-        }
-
-        .progressBarFill {
-            width: 0%;
-            height: 20px;
-            background-color: #4CAF50;
-            text-align: center;
-            /* To center it horizontally (if you want) */
-            line-height: 17px;
-            /* To center it vertically */
-            color: white;
-        }
-    </style>
+        <link rel="stylesheet" type="text/css" href="css/style.css">.
 </head>
 
 <body>
-    <h1 class="text-center">Note</h1>
+
+    <script id="tmpl_user_info" type="x-tmpl-mustache">
+        <div class="row justify-content-md-center m-0 p-0">
+            <p class="col-md-6 border border-primary p-1">
+                Hello! <strong>{{firstname}} {{lastname}}</strong> from group: {{group}} 
+            </p>
+        </div>
+    </script>
 
     <script id="tmpl_section" type="x-tmpl-mustache">
         <section class="row justify-content-md-center m-0 mb-1 p-0">
@@ -43,12 +34,12 @@
                     <li class="col-md-12 mb-2">
                         <div class="row">
                             <div class="col-auto mr-auto m-0 p-0">{{subtitle}}</div>
-                            <div class="col-auto">
+                            <div class="col-auto div_note d-none">
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <label for="note" class="pr-2">Note</label>
                                         <span class="font-weight-bold indigo-text mr-2">0</span>
-                                        <input type="range" class="range-field" id="note" min="0" max="5" step="1" value="0">
+                                        <input type="range" class="range-field" min="0" max="5" step="1" value="0">
                                         <span class="font-weight-bold indigo-text ml-2">5</span>
                                     </div>
                                 </form>
@@ -56,7 +47,7 @@
                         </div>
                         <div class="row">
                             <div class="m-0 p-0 progressBar">
-                                <div class="progressBarFill">{{progress}}%</div>
+                                <div class="progressBarFill">Progression du cours: <strong>{{progress}}</strong> %</div>
                             </div>
                         </div>
                     </li>
@@ -65,6 +56,7 @@
             </div>
         </section>
     </script>
+
     <script id="tmpl_date" type="x-tmpl-mustache">
         <div class="row justify-content-end">
             <div class="col-auto">{{date}}</div>
@@ -74,15 +66,20 @@
         </div>
     </script>
     
-    <div id="div_section" class="container-fluid"></div>
 
-    <div id="div_note" class="container-fluid">
+
+    <h1 class="text-center mb-3">Calculateur de note</h1>
+
+    <div id="div_user_info" class="container-fluid"></div>
+    <div id="div_section" class="container-fluid"></div>
+    <div id="div_note" class="container-fluid mt-3">
         <div class="row justify-content-md-center m-0 p-0">
             <p class="col-md-6 border border-primary text-center p-1">Note: N/A</p>
         </div>
     </div>
-
     <footer id="div_date" class="container-fluid"></footer>
+
+
 
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="scripts/mustache.min.js"></script>

@@ -1,0 +1,13 @@
+.progressBar {
+    width: 98%;
+    background-color: rgba(3, 119, 18, 0.329);
+}
+
+.progressBarFill {
+    width: 0%;
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 17px;
+    color: white;
+}
